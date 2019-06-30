@@ -1,46 +1,50 @@
-[parity]
-chain = "./parity-data/spec.json"
-base_path = "parity-data/node1"
-
-[ui]
-disable = true
-
-[network]
-port = 30301
-nat = "none"
-interface = "local"
-reserved_peers="parity-data/reserved-peers"
-
-[rpc]
-cors = ["all"]
-hosts = ["all"]
-apis = ["web3", "eth", "pubsub", "net", "parity", "parity_set", "parity_pubsub", "personal", "traces", "rpc", "shh", "shh_pubsub"]
-port = 8541
-
-[websockets]
-interface = "all"
-origins = ["all"]
-port = 9541
+[account]
+password = ["config/password"]
+unlock = ["0xbbcaa8d48289bb1ffcf9808d9aa4b1d215054c78", "0x32e4e4c7c5d1cea5db5f9202a9e4d99e56c91a24"]
 
 [ipc]
-disable = true
-
-[secretstore]
 disable = true
 
 [ipfs]
 enable = false
 
-[account]
-unlock = ["0xbbcaa8d48289bb1ffcf9808d9aa4b1d215054c78", "0x32e4e4c7c5d1cea5db5f9202a9e4d99e56c91a24"]
-password = ["config/password"]
-
 [mining]
-force_sealing = true
-min_gas_price = 1000000000
-engine_signer = "0xbbcaa8d48289bb1ffcf9808d9aa4b1d215054c78"
-reseal_on_txs = "none"
 extra_data = "Parity"
+force_sealing = true
+hbbft_our_id = "0"
+hbbft_public_key_set = "{\"commit\":{\"coeff\":[[133,73,210,204,66,126,191,247,60,206,32,186,130,240,169,36,23,95,158,225,199,159,33,59,208,98,163,191,214,89,130,240,130,46,3,41,100,68,129,133,140,160,73,33,106,200,195,201]]}}"
+hbbft_public_keys = "{\"0\":[172,35,136,82,190,103,62,117,19,230,157,35,241,194,189,167,122,217,53,208,200,54,212,206,163,136,113,15,210,147,104,246,94,168,63,11,222,222,201,67,11,2,79,147,166,248,239,162]}"
+hbbft_secret_key = "[13002261673206212565,15841804202302790107,6125426316539453197,5417069350796765375]"
+hbbft_secret_share = "[7838318254586960284,17047681872757619251,8971108261188320261,6460204933788431982]"
+min_gas_price = 1000000000
+reseal_on_txs = "none"
 
 [misc]
 logging = "engine=trace,miner=trace,reward=trace"
+
+[network]
+interface = "local"
+nat = "none"
+port = 30301
+reserved_peers = "parity-data/reserved-peers"
+
+[parity]
+base_path = "parity-data/node1"
+chain = "./spec/spec.json"
+
+[rpc]
+apis = ["web3", "eth", "pubsub", "net", "parity", "parity_set", "parity_pubsub", "personal", "traces", "rpc", "shh", "shh_pubsub"]
+cors = ["all"]
+hosts = ["all"]
+port = 8541
+
+[secretstore]
+disable = true
+
+[ui]
+disable = true
+
+[websockets]
+interface = "all"
+origins = ["all"]
+port = 9541

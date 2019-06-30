@@ -1,5 +1,5 @@
 [parity]
-chain = "./parity-data/spec.json"
+chain = "./spec/spec.json"
 base_path = "parity-data/node0"
 
 [ui]
