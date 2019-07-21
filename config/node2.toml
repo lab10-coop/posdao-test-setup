@@ -1,43 +1,51 @@
-[parity]
-chain = "./parity-data/spec.json"
-base_path = "parity-data/node2"
-
-[ui]
-disable = true
-
-[network]
-port = 30302
-discovery = true
-reserved_peers="parity-data/reserved-peers"
-nat = "none"
-interface = "local"
-
-[rpc]
-apis = ["web3", "eth", "pubsub", "net", "parity", "parity_set", "parity_pubsub", "personal", "traces", "rpc", "shh", "shh_pubsub"]
-port = 8542
-
-[websockets]
-port = 9542
+[account]
+password = ["../posdao-test-setup/config/password"]
+unlock = []
 
 [ipc]
-disable = true
-
-[secretstore]
 disable = true
 
 [ipfs]
 enable = false
 
-[account]
-unlock = ["0x75df42383afe6bf5194aa8fa0e9b3d5f9e869441"]
-password = ["config/password"]
-
 [mining]
-force_sealing = true
-min_gas_price = 1000000000
-engine_signer = "0x75df42383afe6bf5194aa8fa0e9b3d5f9e869441"
-reseal_on_txs = "none"
 extra_data = "Parity"
+force_sealing = true
+hbbft_our_id = "\"0x663cef58331044160b297fd979b0a0ad29e7f0cb7a6447ac9ead54b11230c93eb1ab46cc108c3714a6a3a4d8f1bd63c3e83570117e3a9b37134c3c760890ea9d\""
+hbbft_public_key_set = "{\"commit\":{\"coeff\":[[137,86,13,240,132,222,45,26,109,192,31,128,39,38,36,170,172,130,22,82,184,97,175,251,71,106,228,110,119,50,32,0,112,133,66,46,233,29,228,238,94,233,161,93,82,244,169,64]]}}"
+hbbft_public_keys = "{\"0x663cef58331044160b297fd979b0a0ad29e7f0cb7a6447ac9ead54b11230c93eb1ab46cc108c3714a6a3a4d8f1bd63c3e83570117e3a9b37134c3c760890ea9d\":[146,55,94,19,28,205,254,210,140,247,110,214,178,43,10,81,76,72,144,5,142,214,234,216,6,92,81,235,109,193,66,110,216,80,244,104,64,85,131,249,215,89,108,103,112,88,67,171],\"0xb7294de323142607fa7dee94713dfb9bbae51dcadb1dab3ba9b0c6b50e761d8924278d184e87190ad951eec11e5dd2b0ebeb4314e4c424695488bc9ca697ac2f\":[146,90,191,226,239,26,182,21,157,254,92,170,35,152,15,69,60,232,41,10,65,16,161,249,173,246,215,154,109,26,155,59,108,135,163,63,66,92,114,196,183,143,12,199,55,38,76,67]}"
+hbbft_secret_key = "[11436786476161871367,12586904902599865279,9782992991931637264,7981162847028810110]"
+hbbft_secret_share = "[11941141507266604231,11266075108318287276,229879347321035823,2079568753988484609]"
+hbbft_validator_ip_addresses = "{\"0x663cef58331044160b297fd979b0a0ad29e7f0cb7a6447ac9ead54b11230c93eb1ab46cc108c3714a6a3a4d8f1bd63c3e83570117e3a9b37134c3c760890ea9d\":\"enode://663cef58331044160b297fd979b0a0ad29e7f0cb7a6447ac9ead54b11230c93eb1ab46cc108c3714a6a3a4d8f1bd63c3e83570117e3a9b37134c3c760890ea9d@127.0.0.1:30302\",\"0xb7294de323142607fa7dee94713dfb9bbae51dcadb1dab3ba9b0c6b50e761d8924278d184e87190ad951eec11e5dd2b0ebeb4314e4c424695488bc9ca697ac2f\":\"enode://b7294de323142607fa7dee94713dfb9bbae51dcadb1dab3ba9b0c6b50e761d8924278d184e87190ad951eec11e5dd2b0ebeb4314e4c424695488bc9ca697ac2f@127.0.0.1:30301\"}"
+min_gas_price = 1000000000
+reseal_on_txs = "none"
 
 [misc]
 logging = "engine=trace,miner=trace,reward=trace"
+
+[network]
+interface = "local"
+nat = "none"
+port = 30302
+reserved_peers = "../posdao-test-setup/parity-data/reserved-peers"
+
+[parity]
+base_path = "../posdao-test-setup/parity-data/node2"
+chain = "../posdao-test-setup/spec/spec.json"
+
+[rpc]
+apis = ["web3", "eth", "pubsub", "net", "parity", "parity_set", "parity_pubsub", "personal", "traces", "rpc", "shh", "shh_pubsub"]
+cors = ["all"]
+hosts = ["all"]
+port = 8542
+
+[secretstore]
+disable = true
+
+[ui]
+disable = true
+
+[websockets]
+interface = "all"
+origins = ["all"]
+port = 9542
