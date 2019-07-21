@@ -1,5 +1,5 @@
 [account]
-password = ["config/password"]
+password = ["../posdao-test-setup/config/password"]
 unlock = ["0xbbcaa8d48289bb1ffcf9808d9aa4b1d215054c78", "0x32e4e4c7c5d1cea5db5f9202a9e4d99e56c91a24"]
 
 [ipc]
@@ -11,11 +11,12 @@ enable = false
 [mining]
 extra_data = "Parity"
 force_sealing = true
-hbbft_our_id = "0"
-hbbft_public_key_set = "{\"commit\":{\"coeff\":[[133,73,210,204,66,126,191,247,60,206,32,186,130,240,169,36,23,95,158,225,199,159,33,59,208,98,163,191,214,89,130,240,130,46,3,41,100,68,129,133,140,160,73,33,106,200,195,201]]}}"
-hbbft_public_keys = "{\"0\":[172,35,136,82,190,103,62,117,19,230,157,35,241,194,189,167,122,217,53,208,200,54,212,206,163,136,113,15,210,147,104,246,94,168,63,11,222,222,201,67,11,2,79,147,166,248,239,162]}"
-hbbft_secret_key = "[13002261673206212565,15841804202302790107,6125426316539453197,5417069350796765375]"
-hbbft_secret_share = "[7838318254586960284,17047681872757619251,8971108261188320261,6460204933788431982]"
+hbbft_our_id = "\"0xa2c608071ee382b40106989f1437a54eb397efff94b65ec17e403a96b1f989a4490c73b853f9ef6c15187e0541ae8edd06fdb7de903853d50f4d28be5a7ba5b8\""
+hbbft_public_key_set = "{\"commit\":{\"coeff\":[[162,32,222,214,12,80,210,41,21,32,177,122,240,144,55,215,29,233,219,5,191,29,179,77,167,228,139,97,254,191,148,40,3,43,99,10,43,33,178,56,71,110,174,30,246,78,150,68]]}}"
+hbbft_public_keys = "{\"0xa2c608071ee382b40106989f1437a54eb397efff94b65ec17e403a96b1f989a4490c73b853f9ef6c15187e0541ae8edd06fdb7de903853d50f4d28be5a7ba5b8\":[140,134,30,131,29,198,133,137,92,220,117,178,154,44,22,249,64,35,218,4,27,95,231,87,250,81,219,38,91,231,67,158,88,134,197,15,106,101,222,89,199,37,227,65,28,136,250,245]}"
+hbbft_secret_key = "[10495347238147994691,11553136626730830060,6175814432902521784,167152810236882929]"
+hbbft_secret_share = "[14686754158001934221,39746715377902140,1121327504676382576,1460807615083354654]"
+hbbft_validator_ip_addresses = "{\"0xa2c608071ee382b40106989f1437a54eb397efff94b65ec17e403a96b1f989a4490c73b853f9ef6c15187e0541ae8edd06fdb7de903853d50f4d28be5a7ba5b8\":\"enode://a2c608071ee382b40106989f1437a54eb397efff94b65ec17e403a96b1f989a4490c73b853f9ef6c15187e0541ae8edd06fdb7de903853d50f4d28be5a7ba5b8@127.0.0.1:30301\"}"
 min_gas_price = 1000000000
 reseal_on_txs = "none"
 
@@ -26,11 +27,11 @@ logging = "engine=trace,miner=trace,reward=trace"
 interface = "local"
 nat = "none"
 port = 30301
-reserved_peers = "parity-data/reserved-peers"
+reserved_peers = "../posdao-test-setup/parity-data/reserved-peers"
 
 [parity]
-base_path = "parity-data/node1"
-chain = "./spec/spec.json"
+base_path = "../posdao-test-setup/parity-data/node1"
+chain = "../posdao-test-setup/spec/spec.json"
 
 [rpc]
 apis = ["web3", "eth", "pubsub", "net", "parity", "parity_set", "parity_pubsub", "personal", "traces", "rpc", "shh", "shh_pubsub"]
