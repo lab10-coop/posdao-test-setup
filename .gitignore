@@ -16,12 +16,12 @@
 accounts/keystore/UTC*
 
 # Logs
-/parity-data/node[0-9]*/network/
+#/parity-data/node[0-9]*/network/
 /parity-data/node[0-9]*/chains/
 /parity-data/node[0-9]*/log
 /parity-data/node0/blocks.log
 /parity-data/node0/check.log
-/parity-data/reserved-peers
+#/parity-data/reserved-peers
 /parity-data/spec.json
 /parity-data/StakingToken.json
 
