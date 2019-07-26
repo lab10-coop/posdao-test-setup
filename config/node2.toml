@@ -34,6 +34,7 @@ base_path = "../posdao-test-setup/parity-data/node2"
 chain = "../posdao-test-setup/spec/spec.json"
 
 [rpc]
+interface = "all"
 apis = ["web3", "eth", "pubsub", "net", "parity", "parity_set", "parity_pubsub", "personal", "traces", "rpc", "shh", "shh_pubsub"]
 cors = ["all"]
 hosts = ["all"]
