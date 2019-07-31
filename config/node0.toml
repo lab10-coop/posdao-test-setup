@@ -1,6 +1,7 @@
 [parity]
 chain = "./spec/spec.json"
 base_path = "parity-data/node0"
+no_persistent_txqueue = true
 
 [ui]
 disable = true
@@ -14,6 +15,9 @@ interface = "local"
 [rpc]
 apis = ["web3", "eth", "pubsub", "net", "parity", "parity_set", "parity_pubsub", "personal", "traces", "rpc", "shh", "shh_pubsub"]
 port = 8540
+
+[mining]
+min_gas_price = 1000000000
 
 [websockets]
 port = 9540

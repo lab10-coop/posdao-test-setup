@@ -32,8 +32,10 @@ reserved_peers = "../posdao-test-setup/parity-data/reserved-peers"
 [parity]
 base_path = "../posdao-test-setup/parity-data/node1"
 chain = "../posdao-test-setup/spec/spec.json"
+no_persistent_txqueue = true
 
 [rpc]
+interface = "all"
 apis = ["web3", "eth", "pubsub", "net", "parity", "parity_set", "parity_pubsub", "personal", "traces", "rpc", "shh", "shh_pubsub"]
 cors = ["all"]
 hosts = ["all"]

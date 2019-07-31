@@ -32,6 +32,7 @@ reserved_peers = "../posdao-test-setup/parity-data/reserved-peers"
 [parity]
 base_path = "../posdao-test-setup/parity-data/node2"
 chain = "../posdao-test-setup/spec/spec.json"
+no_persistent_txqueue = true
 
 [rpc]
 interface = "all"
@@ -50,3 +51,9 @@ disable = true
 interface = "all"
 origins = ["all"]
 port = 9542
+hosts = ["all"]
+
+[footprint]
+tracing = "on"
+pruning = "archive"
+fat_db = "on"
