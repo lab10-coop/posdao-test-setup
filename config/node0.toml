@@ -18,6 +18,7 @@ port = 8540
 
 [mining]
 min_gas_price = 1000000000
+reseal_min_period = 0
 
 [websockets]
 port = 9540
@@ -32,4 +33,4 @@ disable = true
 enable = false
 
 [misc]
-logging = "engine=trace,miner=trace,reward=trace"
+#logging = "engine=trace,miner=trace,reward=trace"
