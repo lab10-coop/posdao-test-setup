@@ -1,4 +1,4 @@
 [submodule "posdao-contracts"]
 	path = posdao-contracts
-	url = https://github.com/poanetwork/posdao-contracts
-	branch = master
+	branch = dh-staking-ui-rebased
+	url = ../posdao-contracts.git
