@@ -1,4 +1,4 @@
 [submodule "posdao-contracts"]
 	path = posdao-contracts
-	url = https://github.com/poanetwork/posdao-contracts
-	branch = claim-reward
+	branch = artis_forking
+	url = ../posdao-contracts.git
