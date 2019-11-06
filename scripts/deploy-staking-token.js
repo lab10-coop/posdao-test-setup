@@ -9,8 +9,7 @@ const SnS = require('../utils/signAndSendTx.js');
 const web3 = new Web3('http://localhost:8541');
 web3.eth.transactionConfirmationBlocks = 1;
 const BN = web3.utils.BN;
-const BlockRewardAuRa = require(path.join(__dirname, '../utils/getContract'))('BlockRewardAuRa', web3);
-const StakingAuRa = require(path.join(__dirname, '../utils/getContract'))('StakingAuRa', web3);
+const getContract = require(path.join(__dirname, '../utils/getContract'));
 const OWNER = constants.OWNER;
 const expect = require('chai')
     .use(require('chai-bn')(BN))
@@ -43,6 +42,9 @@ function compileContract() {
 }
 
 async function main() {
+    const BlockRewardAuRa = await getContract('BlockRewardAuRa', web3);
+    const StakingAuRa = await getContract('StakingAuRa', web3);
+
     console.log('**** Check that StakingToken is already deployed in StakingAuRa');
     let existingStakingTokenAddress = await StakingAuRa.instance.methods.erc677TokenContract().call();
     if (existingStakingTokenAddress

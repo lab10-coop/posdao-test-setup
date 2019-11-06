@@ -3,8 +3,8 @@ const getContract = require('./getContract');
 const RETRY_INTERVAL_MS = 2499;
 
 module.exports = async (web3) => {
-    let ValidatorSetAuRaContract = getContract('ValidatorSetAuRa', web3).instance;
-    let StakingAuRaContract = getContract('StakingAuRa', web3).instance;
+    const ValidatorSetAuRaContract = (await getContract('ValidatorSetAuRa', web3)).instance;
+    const StakingAuRaContract = (await getContract('StakingAuRa', web3)).instance;
 
     let initialStakingEpoch = parseInt(await StakingAuRaContract.methods.stakingEpoch().call());
     // wait for the next staking epoch

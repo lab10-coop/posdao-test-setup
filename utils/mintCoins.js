@@ -4,7 +4,7 @@ const OWNER = constants.OWNER;
 const getContract = require('./getContract');
 
 module.exports = async function (web3, fromWhom, toWhom, howMuch) {
-    const BlockRewardAuRa = getContract('BlockRewardAuRa', web3);
+    const BlockRewardAuRa = await getContract('BlockRewardAuRa', web3);
     if (!fromWhom) {
         fromWhom = OWNER;
     }

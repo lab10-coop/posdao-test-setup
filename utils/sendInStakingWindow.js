@@ -1,5 +1,6 @@
 'use strict';
 
+const getContract = require('./getContract');
 const RETRY_INTERVAL_MS = 2499;
 
 async function getCurrentBlockNumber(web3) {
@@ -7,7 +8,7 @@ async function getCurrentBlockNumber(web3) {
 }
 
 module.exports = async function (web3, sendTx) {
-    let StakingAuRa = require('../utils/getContract')('StakingAuRa', web3);
+    const StakingAuRa = await getContract('StakingAuRa', web3);
     // `8` is to account for possible period of snapshotting
     let stakeWithdrawDisallowPeriod = parseInt(await StakingAuRa.instance.methods.stakeWithdrawDisallowPeriod().call());
     let maxRetriesBlocks = 8 + stakeWithdrawDisallowPeriod;

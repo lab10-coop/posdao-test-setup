@@ -11,10 +11,8 @@ const expect = require('chai')
     .use(require('chai-bn')(BN))
     .use(require('chai-as-promised'))
     .expect;
-const BlockRewardAuRa = require('../utils/getContract')('BlockRewardAuRa', web3);
-const ValidatorSetAuRa = require('../utils/getContract')('ValidatorSetAuRa', web3);
-const StakingAuRa = require('../utils/getContract')('StakingAuRa', web3);
-const StakingTokenContract = require('../utils/getContract')('StakingToken', web3);
+
+const getContract = require('../utils/getContract');
 const sendInStakingWindow = require('../utils/sendInStakingWindow');
 const waitForValidatorSetChange = require('../utils/waitForValidatorSetChange');
 const pp = require('../utils/prettyPrint');
@@ -22,6 +20,11 @@ const REVERT_EXCEPTION_MSG = 'The execution failed due to an exception';
 const waitForNextStakingEpoch = require('../utils/waitForNextStakingEpoch');
 
 describe('Candidates place stakes on themselves', () => {
+    let BlockRewardAuRa;
+    let ValidatorSetAuRa;
+    let StakingAuRa;
+    let StakingTokenContract;
+
     var minCandidateStake;
     var minCandidateStakeBN;
     var minDelegatorStake;
@@ -30,6 +33,11 @@ describe('Candidates place stakes on themselves', () => {
     var delegators = [];
 
     before(async () => {
+        BlockRewardAuRa = await getContract('BlockRewardAuRa', web3);
+        ValidatorSetAuRa = await getContract('ValidatorSetAuRa', web3);
+        StakingAuRa = await getContract('StakingAuRa', web3);
+        StakingTokenContract = await getContract('StakingToken', web3);
+
         // this is min stake per a CANDIDATE
         minCandidateStake = await StakingAuRa.instance.methods.candidateMinStake().call();
         minDelegatorStake = await StakingAuRa.instance.methods.delegatorMinStake().call();
