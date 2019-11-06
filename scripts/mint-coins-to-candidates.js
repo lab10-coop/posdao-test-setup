@@ -4,7 +4,7 @@ const SnS = require('../utils/signAndSendTx.js');
 const web3 = new Web3('http://localhost:8541');
 web3.eth.transactionConfirmationBlocks = 1;
 const BN = web3.utils.BN;
-const ValidatorSetAuRa = require(path.join(__dirname, '../utils/getContract'))('ValidatorSetAuRa', web3);
+const getContract = require(path.join(__dirname, '../utils/getContract'));
 const expect = require('chai')
     .use(require('chai-bn')(BN))
     .use(require('chai-as-promised'))
@@ -15,6 +15,8 @@ const constants = require('../utils/constants');
 const coins = constants.CANDIDATE_INITIAL_BALANCE;
 
 module.exports = async function () {
+    const ValidatorSetAuRa = await getContract('ValidatorSetAuRa', web3);
+
     const unremovableValidator = await ValidatorSetAuRa.instance.methods.unremovableValidator().call();
     const unremovableValidatorExists = unremovableValidator != '0x0000000000000000000000000000000000000000';
     let toWhom = [...constants.CANDIDATES.map(c => c.staking)];
