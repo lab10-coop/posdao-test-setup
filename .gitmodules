@@ -1,4 +1,4 @@
 [submodule "posdao-contracts"]
 	path = posdao-contracts
-	branch = artis
+	branch = dh-forking
 	url = ../posdao-contracts.git
