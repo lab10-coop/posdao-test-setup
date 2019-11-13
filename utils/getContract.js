@@ -1,4 +1,3 @@
-const constants = require('./constants');
 
 async function getStakingAddress(web3) {
     const ValidatorSetAuRa = await getContract('ValidatorSetAuRa', web3);
@@ -16,17 +15,18 @@ async function getContract(contractName, web3) {
     // parse the current chain spec. This should work both for POSDAO-from start and upgrade-to-POSDAO chains
     const spec = require('../parity-data/spec');
     const posdaoTransition = spec.engine.authorityRound.params.posdaoTransition || 0;
-    const validatorSetAddress = spec.engine.authorityRound.params.validators.multi[posdaoTransition].contract || constants.VALIDATOR_SET_ADDRESS;
+    const validatorSetAddress = spec.engine.authorityRound.params.validators.multi[posdaoTransition].contract;
     const blockRewardAddress = spec.engine.authorityRound.params.blockRewardContractAddress ||
-        spec.engine.authorityRound.params.blockRewardContractTransitions[posdaoTransition] || constants.BLOCK_REWARD_ADDRESS;
+        spec.engine.authorityRound.params.blockRewardContractTransitions[posdaoTransition];
+    const randomnessAddress = spec.engine.authorityRound.params.randomnessContractAddress;
 
     switch (contractName) {
         case 'RandomAuRa':
             abi = require('../posdao-contracts/build/contracts/RandomAuRa').abi;
             return {
-                address: constants.RANDOM_AURA_ADDRESS,
+                address: randomnessAddress,
                 abi: abi,
-                instance: new web3.eth.Contract(abi, constants.RANDOM_AURA_ADDRESS),
+                instance: new web3.eth.Contract(abi, randomnessAddress),
             };
         case 'BlockRewardAuRa':
             abi = require('../posdao-contracts/build/contracts/BlockRewardAuRa').abi;
