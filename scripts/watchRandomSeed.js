@@ -16,8 +16,10 @@ const checkLogFileName = path.join(__dirname, `${node1Path}/checkRandomSeed.log`
 const checkDebugFileName = path.join(__dirname, `${node1Path}/checkRandomSeedDebug.log`);
 fs.writeFileSync(checkLogFileName, '', 'utf8');
 
-const RandomAuRa = require('../utils/getContract')('RandomAuRa', web3).instance;
-const ValidatorSetAuRa = require('../utils/getContract')('ValidatorSetAuRa', web3).instance;
+const getContract = require('../utils/getContract');
+
+let RandomAuRa;
+let ValidatorSetAuRa;
 let collectRoundLengthBN;
 let prevBlock;
 
@@ -81,8 +83,8 @@ async function wait(ms) {
 function doCheck() {
     Promise.all([
         web3.eth.getBlock('latest', false),
-        RandomAuRa.methods.currentSeed().call(),
-        ValidatorSetAuRa.methods.getValidators().call(),
+        RandomAuRa.instance.methods.currentSeed().call(),
+        ValidatorSetAuRa.instance.methods.getValidators().call(),
     ]).then(results => {
         let block = results[0];
         if (block.number == prevBlock) return;
@@ -101,9 +103,11 @@ function doCheck() {
 
 
 async function main() {
+    RandomAuRa = await getContract('RandomAuRa', web3);
+    ValidatorSetAuRa = await getContract('ValidatorSetAuRa', web3);
     // initially wait until collectRoundLength is defined
     while (true) {
-        let _collectRoundLengthBN = await RandomAuRa.methods.collectRoundLength().call();
+        let _collectRoundLengthBN = await RandomAuRa.instance.methods.collectRoundLength().call();
         if (_collectRoundLengthBN) {
             collectRoundLengthBN = new web3.utils.BN(_collectRoundLengthBN);
             break;
