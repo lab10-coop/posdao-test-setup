@@ -7,6 +7,8 @@ This is an integration test of AuRa PoS with seven Parity nodes running locally.
 
 To configure the repository and run tests, execute `npm run all`.
 
+To test upgrading of an existing chain to posdao instead, run `npm run all-upgrade`.
+
 
 ## Requirements
 
