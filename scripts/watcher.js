@@ -4,31 +4,28 @@ console.log('');
 const fs = require('fs');
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:9541'));
+const getContract = require('../utils/getContract');
 
-const artifactsPath = '../posdao-contracts/build/contracts/';
-const validatorSetContract = new web3.eth.Contract(
-  require(`${artifactsPath}ValidatorSetAuRa.json`).abi,
-  '0x1000000000000000000000000000000000000001'
-);
-const stakingContract = new web3.eth.Contract(
-  require(`${artifactsPath}StakingAuRa.json`).abi,
-  '0x1100000000000000000000000000000000000001'
-);
-const randomContract = new web3.eth.Contract(
-  require(`${artifactsPath}RandomAuRa.json`).abi,
-  '0x3000000000000000000000000000000000000001'
-);
+let validatorSetContract;
+let stakingContract;
+let randomContract;
 
 const contractNameByAddress = {};
-contractNameByAddress[validatorSetContract.options.address] = 'ValidatorSetAuRa';
-contractNameByAddress[stakingContract.options.address] = 'StakingAuRa';
-contractNameByAddress[randomContract.options.address] = 'RandomAuRa';
 
-web3.eth.subscribe('newBlockHeaders', function(error, result){
+web3.eth.subscribe('newBlockHeaders', async function(error, result){
   if (error) {
     console.log(error);
   }
 }).on("data", async function(blockHeader){
+  // would be more elegant to do this once in an init section. Would required to wrap this all into an async function.
+  validatorSetContract = (await getContract('ValidatorSetAuRa', web3)).instance;
+  stakingContract = (await getContract('StakingAuRa', web3)).instance;
+  randomContract = (await getContract('RandomAuRa', web3)).instance;
+
+  contractNameByAddress[validatorSetContract.options.address] = 'ValidatorSetAuRa';
+  contractNameByAddress[stakingContract.options.address] = 'StakingAuRa';
+  contractNameByAddress[randomContract.options.address] = 'RandomAuRa';
+
   if (blockHeader.number) {
     const block = await web3.eth.getBlock(blockHeader.number, true);
 
