@@ -26,7 +26,7 @@ function compileContract() {
         language: 'Solidity',
         sources: {
             'token.sol': {
-                content: fs.readFileSync(path.join(__dirname, '../posdao-contracts/test/mockContracts/ERC677BridgeTokenRewardableMock.sol'), 'utf8'),
+                content: fs.readFileSync(path.join(__dirname, '../posdao-contracts/contracts/mockContracts/ERC677BridgeTokenRewardableMock.sol'), 'utf8'),
             },
         },
         settings: {

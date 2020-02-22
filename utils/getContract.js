@@ -18,7 +18,7 @@ async function getContract(contractName, web3) {
     const validatorSetAddress = spec.engine.authorityRound.params.validators.multi[posdaoTransition].contract;
     const blockRewardAddress = spec.engine.authorityRound.params.blockRewardContractAddress ||
         spec.engine.authorityRound.params.blockRewardContractTransitions[posdaoTransition];
-    const randomnessAddress = spec.engine.authorityRound.params.randomnessContractAddress;
+    const randomnessAddress = spec.engine.authorityRound.params.randomnessContractAddress[posdaoTransition];
 
     switch (contractName) {
         case 'RandomAuRa':

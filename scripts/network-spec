@@ -18,7 +18,9 @@ RPC_URL=http://localhost:8541
 SPEC_FILE=pre-upgrade-spec.json
 DEPLOYER_ADDR=0x32e4e4c7c5d1cea5db5f9202a9e4d99e56c91a24
 # must be a multiple of COLLECT_ROUND_LENGTH for the RandomAuRa contract to work properly
-FORK_BLOCK=38
+FORK_BLOCK=76
+# This value is hardcoded in ValidatorSet contract. The upgrade script will complain if not matching.
+MAX_VALIDATORS=19
 
 # epoch rewards
 SUSTAINABILITY_FUND=0x30B125d5Fc58c1b8E3cCB2F1C71a1Cc847f024eE

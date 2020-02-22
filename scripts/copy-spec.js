@@ -33,7 +33,7 @@ async function main() {
   assert(typeof specFile === 'string');
   specFile = JSON.parse(specFile);
   assert(specFile.engine.authorityRound.params.stepDuration != null);
-  
+
   // Set step duration map for testing purposes
   specFile.engine.authorityRound.params.stepDuration = {
     "0": 5
@@ -44,7 +44,7 @@ async function main() {
   console.log('Step duration will be changed at ', new Date(newStepDurationTimestamp * 1000).toLocaleTimeString('en-US'));
 
   const exec = promisify(require('child_process').exec);
-  const { stdout, stderr } = await exec('../../parity-ethereum/target/release/parity --version');
+  const { stdout, stderr } = await exec('../parity-ethereum/target/release/parity --version');
 
   assert(!stderr);
 
